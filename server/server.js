@@ -17,6 +17,24 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const parseOrigins = (value = '') =>
+  value
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+
+const allowedOrigins = new Set([
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+  ...parseOrigins(process.env.ALLOWED_ORIGINS),
+  ...parseOrigins(process.env.FRONTEND_URL),
+  process.env.RENDER_EXTERNAL_URL,
+].filter(Boolean));
+
+const isAllowedOrigin = (origin) =>
+  allowedOrigins.has(origin) ||
+  (process.env.NODE_ENV === 'production' && origin.endsWith('.onrender.com'));
+
 // 1. Helmet Security Headers (including customized CSP)
 app.use(helmet({
   contentSecurityPolicy: {
@@ -32,13 +50,12 @@ app.use(helmet({
 }));
 
 // 2. CORS configurations with client whitelist
-const corsWhitelist = ['http://localhost:3000', 'http://127.0.0.1:3000'];
 const corsOptions = {
   origin: (origin, callback) => {
-    if (!origin || corsWhitelist.includes(origin)) {
+    if (!origin || isAllowedOrigin(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Request blocked by CORS Policy'));
+      callback(null, false);
     }
   },
   credentials: true
