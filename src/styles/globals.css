@@ -1,0 +1,328 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   globals.css
+   Root stylesheet. Imported once in main.jsx.
+   Tailwind v4 CSS-first: @import "tailwindcss" + @theme {} replaces
+   tailwind.config.js and @tailwind directives entirely.
+───────────────────────────────────────────────────────────────────────────── */
+
+@import './fonts.css';
+@import './animations.css';
+
+/* Tailwind v4 — all utilities + base reset */
+@import "tailwindcss";
+
+/* ─── Tailwind v4 Theme Tokens ──────────────────────────────────────────── */
+/* These replace tailwind.config.js extend{} — reference as var(--color-*) or
+   as Tailwind utilities (bg-night-900, text-gold-500, font-display, etc.)   */
+@theme {
+  /* ── Night Palette ─────────────────────────────────────────────────────── */
+  --color-night-950: #04020f;
+  --color-night-900: #0d0a1e;
+  --color-night-800: #14102e;
+  --color-night-700: #1c1640;
+  --color-night-600: #251e52;
+
+  /* ── Gold / Fairy Dust ─────────────────────────────────────────────────── */
+  --color-gold-50:   #fffbeb;
+  --color-gold-100:  #fef3c7;
+  --color-gold-200:  #fde68a;
+  --color-gold-300:  #fcd34d;
+  --color-gold-400:  #fbbf24;
+  --color-gold-500:  #f59e0b;
+  --color-gold-600:  #d97706;
+  --color-gold-glow: #ffe066;
+  --color-gold-spark:#fff176;
+
+  /* ── Royal Purple ──────────────────────────────────────────────────────── */
+  --color-royal-100: #ede9fe;
+  --color-royal-200: #ddd6fe;
+  --color-royal-300: #c4b5fd;
+  --color-royal-400: #a78bfa;
+  --color-royal-500: #8b5cf6;
+  --color-royal-600: #7c3aed;
+  --color-royal-700: #6d28d9;
+  --color-royal-800: #5b21b6;
+  --color-royal-900: #4c1d95;
+  --color-royal-deep:#2d1b69;
+
+  /* ── Rose / Princess Pink ──────────────────────────────────────────────── */
+  --color-rose-100:  #ffe4e6;
+  --color-rose-200:  #fecdd3;
+  --color-rose-300:  #fda4af;
+  --color-rose-400:  #fb7185;
+  --color-rose-500:  #f43f5e;
+  --color-rose-600:  #e11d48;
+  --color-rose-blush:#ffc2d4;
+  --color-rose-petal:#ffb3c6;
+
+  /* ── Fairy Teal ────────────────────────────────────────────────────────── */
+  --color-fairy-100: #ccfbf1;
+  --color-fairy-200: #99f6e4;
+  --color-fairy-300: #5eead4;
+  --color-fairy-400: #2dd4bf;
+  --color-fairy-500: #14b8a6;
+  --color-fairy-600: #0d9488;
+  --color-fairy-glow:#67e8f9;
+
+  /* ── Star White ────────────────────────────────────────────────────────── */
+  --color-star-100:  #f8f7ff;
+  --color-star-200:  #ece8ff;
+  --color-star-pure: #ffffff;
+  --color-star-dust: #e8e0ff;
+
+  /* ── Fonts ─────────────────────────────────────────────────────────────── */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-script:  "Dancing Script", cursive;
+  --font-body:    Outfit, system-ui, sans-serif;
+  --font-sans:    Outfit, system-ui, sans-serif;
+
+  /* ── Spacing extras ────────────────────────────────────────────────────── */
+  --spacing-scene: 100vh;
+
+  /* ── Border Radius extras ──────────────────────────────────────────────── */
+  --radius-magical: 2rem;
+  --radius-royal:   3rem;
+
+  /* ── Shadows ────────────────────────────────────────────────────────────── */
+  --shadow-glow-gold:   0 0 30px rgba(251,191,36,0.6), 0 0 60px rgba(251,191,36,0.3);
+  --shadow-glow-purple: 0 0 30px rgba(139,92,246,0.6), 0 0 60px rgba(139,92,246,0.3);
+  --shadow-glow-pink:   0 0 30px rgba(244,63,94,0.5),  0 0 60px rgba(244,63,94,0.2);
+  --shadow-cinematic:   0 25px 80px rgba(0,0,0,0.8);
+
+  /* ── Animation Keyframes (referenced by @keyframes below) ──────────────── */
+  --animate-float:       float 3s ease-in-out infinite;
+  --animate-twinkle:     twinkle 2s ease-in-out infinite;
+  --animate-shimmer:     shimmer 3s linear infinite;
+  --animate-pulse-glow:  pulseGlow 2s ease-in-out infinite;
+  --animate-fairy-dust:  fairyDust 4s linear infinite;
+  --animate-breathe:     breathe 3s ease-in-out infinite;
+  --animate-star-spin:   starSpin 8s linear infinite;
+}
+
+
+/* ─── CSS Design Tokens (mirrors tailwind.config.js for non-Tailwind usage) ─ */
+:root {
+  /* Night palette */
+  --color-night-950:  #04020f;
+  --color-night-900:  #0d0a1e;
+  --color-night-800:  #14102e;
+  --color-night-700:  #1c1640;
+  --color-night-600:  #251e52;
+
+  /* Gold / fairy dust */
+  --color-gold-400:   #fbbf24;
+  --color-gold-500:   #f59e0b;
+  --color-gold-glow:  #ffe066;
+  --color-gold-spark: #fff176;
+
+  /* Royal purple */
+  --color-royal-500:  #8b5cf6;
+  --color-royal-600:  #7c3aed;
+  --color-royal-900:  #4c1d95;
+  --color-royal-deep: #2d1b69;
+
+  /* Rose */
+  --color-rose-400:   #fb7185;
+  --color-rose-500:   #f43f5e;
+  --color-rose-blush: #ffc2d4;
+
+  /* Fairy teal */
+  --color-fairy-400:  #2dd4bf;
+  --color-fairy-glow: #67e8f9;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-script:  'Dancing Script', cursive;
+  --font-body:    'Outfit', system-ui, sans-serif;
+
+  /* Timing functions — Disney easing curves */
+  --ease-disney:     cubic-bezier(0.34, 1.56, 0.64, 1);   /* Overshoot bounce */
+  --ease-cinematic:  cubic-bezier(0.76, 0, 0.24, 1);      /* Heavy deceleration */
+  --ease-magic:      cubic-bezier(0.22, 1, 0.36, 1);      /* Smooth spring */
+  --ease-dramatic:   cubic-bezier(0.86, 0, 0.07, 1);      /* Sharp in/out */
+
+  /* Duration scale */
+  --dur-instant:  100ms;
+  --dur-fast:     250ms;
+  --dur-normal:   500ms;
+  --dur-slow:     800ms;
+  --dur-cinematic: 1200ms;
+  --dur-epic:     2000ms;
+
+  /* Z-index scale */
+  --z-scene:      10;
+  --z-overlay:    20;
+  --z-transition: 30;
+  --z-hud:        40;
+  --z-modal:      50;
+  --z-toast:      60;
+  --z-cursor:     70;
+}
+
+/* ─── Base Reset ─────────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    /* Prevent layout shift on scrollbar appear */
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-night-900);
+    color: #ffffff;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent text selection during cinematic transitions */
+    user-select: none;
+  }
+
+  /* Allow text selection in inputs and content areas */
+  input, textarea, [data-selectable] {
+    user-select: text;
+  }
+
+  /* Remove default button styles */
+  button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+
+  /* Remove default link underlines */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Base heading styles */
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    line-height: 1.15;
+  }
+
+  h4, h5, h6 {
+    font-family: var(--font-body);
+    font-weight: 600;
+  }
+
+  /* Root container — full viewport, no overflow */
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+}
+
+/* ─── Component Utilities ────────────────────────────────────────────────── */
+@layer components {
+  /* Scene: every scene fills the full viewport */
+  .scene {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    will-change: opacity, transform;
+  }
+
+  /* Glassmorphism card */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+  }
+
+  .glass-dark {
+    background: rgba(13, 10, 30, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 1.5rem;
+  }
+
+  /* Text gradient utility */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #f59e0b, #fbbf24, #fde68a, #fbbf24);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .text-gradient-royal {
+    background: linear-gradient(135deg, #a78bfa, #8b5cf6, #c4b5fd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-rose {
+    background: linear-gradient(135deg, #fda4af, #f43f5e, #fda4af);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Glow borders */
+  .border-glow-gold {
+    border: 1px solid rgba(251, 191, 36, 0.5);
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.3), inset 0 0 20px rgba(251, 191, 36, 0.05);
+  }
+
+  .border-glow-royal {
+    border: 1px solid rgba(139, 92, 246, 0.5);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), inset 0 0 20px rgba(139, 92, 246, 0.05);
+  }
+
+  /* Cinematic overlay — used as scene base */
+  .cinematic-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center top, rgba(37, 30, 82, 0.4) 0%, rgba(4, 2, 15, 0.8) 100%);
+    pointer-events: none;
+  }
+
+  /* Absolute fill helper */
+  .absolute-fill {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* ─── Scrollbar Styling ──────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-night-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-royal-600);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-royal-500);
+}
+
+/* ─── Focus Visible ──────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-gold-glow);
+  outline-offset: 3px;
+  border-radius: 4px;
+}

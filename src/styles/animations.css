@@ -1,0 +1,308 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   animations.css
+   Global CSS keyframe library.
+   GSAP handles JS-driven animations. This file handles CSS-only animations
+   used via Tailwind's animation utilities and direct className application.
+───────────────────────────────────────────────────────────────────────────── */
+
+/* ─── Entrance Animations ────────────────────────────────────────────────── */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes disneyBounceIn {
+  0%   { opacity: 0; transform: scale(0.3); }
+  50%  { opacity: 1; transform: scale(1.08); }
+  70%  { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+
+/* ─── Exit Animations ────────────────────────────────────────────────────── */
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes fadeOutUp {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-40px); }
+}
+
+@keyframes fadeOutDown {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(40px); }
+}
+
+/* ─── Looping Effects ────────────────────────────────────────────────────── */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+
+@keyframes floatRotate {
+  0%   { transform: translateY(0px) rotate(0deg); }
+  50%  { transform: translateY(-10px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.2; transform: scale(0.5); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(251, 191, 36, 0.3); }
+  50%       { box-shadow: 0 0 50px rgba(251, 191, 36, 0.9), 0 0 100px rgba(251, 191, 36, 0.4); }
+}
+
+@keyframes pulseGlowRoyal {
+  0%, 100% { box-shadow: 0 0 15px rgba(139, 92, 246, 0.3); }
+  50%       { box-shadow: 0 0 50px rgba(139, 92, 246, 0.9), 0 0 100px rgba(139, 92, 246, 0.4); }
+}
+
+@keyframes starSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.04); }
+}
+
+/* ─── Scene Transition Animations ───────────────────────────────────────── */
+
+/* Full-screen fade overlay */
+@keyframes screenFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes screenFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* Curtain transition */
+@keyframes curtainOpenLeft {
+  from { transform: scaleX(1); transform-origin: left; }
+  to   { transform: scaleX(0); transform-origin: left; }
+}
+
+@keyframes curtainOpenRight {
+  from { transform: scaleX(1); transform-origin: right; }
+  to   { transform: scaleX(0); transform-origin: right; }
+}
+
+@keyframes curtainCloseLeft {
+  from { transform: scaleX(0); transform-origin: left; }
+  to   { transform: scaleX(1); transform-origin: left; }
+}
+
+@keyframes curtainCloseRight {
+  from { transform: scaleX(0); transform-origin: right; }
+  to   { transform: scaleX(1); transform-origin: right; }
+}
+
+/* Iris / portal wipe */
+@keyframes irisOpen {
+  from { clip-path: circle(0% at 50% 50%); }
+  to   { clip-path: circle(150% at 50% 50%); }
+}
+
+@keyframes irisClose {
+  from { clip-path: circle(150% at 50% 50%); }
+  to   { clip-path: circle(0% at 50% 50%); }
+}
+
+/* Sparkle dissolve */
+@keyframes sparkleDissolve {
+  0%   { opacity: 1; filter: blur(0px); }
+  50%  { opacity: 0.5; filter: blur(4px) brightness(2); }
+  100% { opacity: 0; filter: blur(8px) brightness(3); }
+}
+
+/* ─── Particle / Fairy Dust ──────────────────────────────────────────────── */
+
+@keyframes fairyDust {
+  0%   { transform: translateY(0) rotate(0deg);    opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes starfall {
+  0%   { transform: translate(0, 0) rotate(45deg);    opacity: 1; }
+  100% { transform: translate(300px, 300px) rotate(45deg); opacity: 0; }
+}
+
+@keyframes fireworkBurst {
+  0%   { transform: scale(0); opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* ─── Utility Animation Classes ─────────────────────────────────────────── */
+
+.animate-fade-in          { animation: fadeIn          0.5s var(--ease-magic) forwards; }
+.animate-fade-in-up       { animation: fadeInUp        0.6s var(--ease-magic) forwards; }
+.animate-fade-in-down     { animation: fadeInDown      0.6s var(--ease-magic) forwards; }
+.animate-fade-in-left     { animation: fadeInLeft      0.6s var(--ease-magic) forwards; }
+.animate-fade-in-right    { animation: fadeInRight     0.6s var(--ease-magic) forwards; }
+.animate-scale-in         { animation: scaleIn         0.5s var(--ease-disney) forwards; }
+.animate-disney-bounce-in { animation: disneyBounceIn  0.8s var(--ease-disney) forwards; }
+.animate-breathe          { animation: breathe         3s ease-in-out infinite; }
+.animate-star-spin        { animation: starSpin        8s linear infinite; }
+.animate-float-rotate     { animation: floatRotate     4s ease-in-out infinite; }
+.animate-iris-open        { animation: irisOpen        1s var(--ease-cinematic) forwards; }
+.animate-iris-close       { animation: irisClose       1s var(--ease-cinematic) forwards; }
+.animate-sparkle-dissolve { animation: sparkleDissolve 0.8s var(--ease-dramatic) forwards; }
+
+/* Delay helpers */
+.delay-100  { animation-delay: 100ms; }
+.delay-200  { animation-delay: 200ms; }
+.delay-300  { animation-delay: 300ms; }
+.delay-400  { animation-delay: 400ms; }
+.delay-500  { animation-delay: 500ms; }
+.delay-700  { animation-delay: 700ms; }
+.delay-1000 { animation-delay: 1000ms; }
+.delay-1500 { animation-delay: 1500ms; }
+.delay-2000 { animation-delay: 2000ms; }
+
+/* Fill mode — keeps end state */
+.fill-forwards  { animation-fill-mode: forwards; }
+.fill-backwards { animation-fill-mode: backwards; }
+.fill-both      { animation-fill-mode: both; }
+
+/* Paused state (JS toggles this class) */
+.animation-paused { animation-play-state: paused; }
+
+/* ─── Phase 4: Princess Entrance ─────────────────────────────────────────── */
+
+/* Dress gentle sway — used on princess dress layers */
+@keyframes dressSway {
+  0%, 100% { transform: skewX(0deg) scaleX(1); }
+  25%       { transform: skewX(1.5deg) scaleX(1.01); }
+  75%       { transform: skewX(-1.5deg) scaleX(0.99); }
+}
+
+/* Tiara sparkle — random twinkle bursts on crown gems */
+@keyframes tiaraSparkle {
+  0%, 90%, 100% { opacity: 0;   transform: scale(0) rotate(0deg); }
+  93%            { opacity: 1;   transform: scale(1.5) rotate(45deg); }
+  96%            { opacity: 0.7; transform: scale(1) rotate(90deg); }
+}
+
+/* Princess walk body sway — gentle up-down bob */
+@keyframes walkBob {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* Dress hem ripple — soft perspective wave */
+@keyframes dressHem {
+  0%, 100% { transform: perspective(400px) rotateX(0deg); }
+  50%       { transform: perspective(400px) rotateX(2deg); }
+}
+
+/* Lamp glow pulse — lamps flickering to life */
+@keyframes lampGlow {
+  0%         { opacity: 0; filter: blur(8px); transform: scale(0.6); }
+  40%        { opacity: 1; filter: blur(0px); transform: scale(1.1); }
+  60%        { transform: scale(0.95); }
+  80%, 100%  { opacity: 0.85; transform: scale(1); filter: blur(2px); }
+}
+
+/* God ray shimmer — warm castle light shafts */
+@keyframes godRayShimmer {
+  0%, 100% { opacity: 0.15; transform: scaleX(1); }
+  50%       { opacity: 0.3;  transform: scaleX(1.05); }
+}
+
+/* Fog drift outward from doors */
+@keyframes fogDrift {
+  0%   { transform: translateX(0) scaleX(1); opacity: 0.8; }
+  100% { transform: translateX(60px) scaleX(2.5); opacity: 0; }
+}
+
+/* Magical particle float upward */
+@keyframes magicFloat {
+  0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.9; }
+  50%  { transform: translateY(-40px) rotate(180deg) scale(1.2); opacity: 1; }
+  100% { transform: translateY(-90px) rotate(360deg) scale(0.5); opacity: 0; }
+}
+
+/* Firefly orbit loop */
+@keyframes fireflyOrbit {
+  0%   { transform: translate(0px, 0px); }
+  25%  { transform: translate(12px, -8px); }
+  50%  { transform: translate(20px, 4px); }
+  75%  { transform: translate(6px, 14px); }
+  100% { transform: translate(0px, 0px); }
+}
+
+/* Hair gentle drift */
+@keyframes hairDrift {
+  0%, 100% { transform: skewX(0deg); }
+  30%       { transform: skewX(0.8deg); }
+  70%       { transform: skewX(-0.8deg); }
+}
+
+/* Title reveal — royal golden shimmer on text */
+@keyframes royalReveal {
+  0%   { opacity: 0; transform: translateY(30px) scale(0.9); filter: blur(8px); }
+  60%  { opacity: 1; transform: translateY(-3px) scale(1.02); filter: blur(0px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0px); }
+}
+
+/* Silhouette backlight pulse */
+@keyframes silhouetteBacklight {
+  0%, 100% { filter: brightness(0) drop-shadow(0 0 40px rgba(255,200,100,0.6)); }
+  50%       { filter: brightness(0) drop-shadow(0 0 80px rgba(255,220,120,1)); }
+}
+
+/* Utility animation classes for princess scene */
+.animate-dress-sway      { animation: dressSway     3.5s ease-in-out infinite; }
+.animate-tiara-sparkle   { animation: tiaraSparkle  4s ease-in-out infinite; }
+.animate-walk-bob        { animation: walkBob       1.2s ease-in-out infinite; }
+.animate-dress-hem       { animation: dressHem      2s ease-in-out infinite; }
+.animate-lamp-glow       { animation: lampGlow      0.6s ease-out forwards; }
+.animate-god-ray         { animation: godRayShimmer 4s ease-in-out infinite; }
+.animate-fog-drift       { animation: fogDrift      4s ease-out forwards; }
+.animate-magic-float     { animation: magicFloat    3s ease-in-out infinite; }
+.animate-firefly-orbit   { animation: fireflyOrbit  5s ease-in-out infinite; }
+.animate-hair-drift      { animation: hairDrift     4s ease-in-out infinite; }
+.animate-royal-reveal    { animation: royalReveal   1.4s var(--ease-cinematic) forwards; }
+.animate-silhouette      { animation: silhouetteBacklight 2s ease-in-out infinite; }

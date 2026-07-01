@@ -1,0 +1,18 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   fonts.css
+   Web font declarations. Google Fonts are loaded via <link> in index.html.
+   This file declares any self-hosted fonts placed in /public/fonts/.
+───────────────────────────────────────────────────────────────────────────── */
+
+/*
+  Self-hosted fonts go here when added in future phases.
+  Pattern:
+
+  @font-face {
+    font-family: 'MyFont';
+    src: url('/fonts/MyFont-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+*/
